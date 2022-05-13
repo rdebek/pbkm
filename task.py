@@ -27,7 +27,13 @@ class Authenticator:
             if username == user and password_hash == passwd:
                 return True
         return False
+    
+    # Lepsze rozwiazanie:
 
+    @staticmethod
+    def login(username: str, password: str) -> bool:
+        password_hash = hash_password(password)
+        return (username, password_hash) in AUTH_TABLE
 
 
 if __name__ == "__main__":
